@@ -3,6 +3,11 @@
   <div class="m-placing-inputs">
     <span class="a-placing-input"><label>X:</label><input type="number" [ngModel]="x" (ngModelChange)="setX($event)" min="0" max="4"></span>
     <span class="a-placing-input"><label>Y:</label><input type="number" [ngModel]="y" (ngModelChange)="setY($event)" min="0" max="4"></span>
-    <span class="a-placing-input"><label>FACING:</label><select><option *ngFor="let opt of options" ngDefaultControl [(ngModel)]="option">{{opt}}</option></select></span>
+    <span class="a-placing-input">
+      <label>DIRECTION:</label>
+      <select type="text" [(ngModel)]="direction">
+        <option *ngFor="let dir of directions">{{dir}}</option>
+      </select>
+    </span>
   </div>
 </div>

@@ -1,6 +1,6 @@
-import { Facing } from "../components/field/components/cell/cell.component";
+import { Direction } from "../components/field/components/cell/cell.component";
 
-export interface IPlace extends IDirection, ICoordinate { }
+export interface IRobot extends IDirection, ICoordinate { }
 
 export interface ICoordinate {
   x: number;
@@ -8,5 +8,5 @@ export interface ICoordinate {
 }
 
 export interface IDirection {
-  direction: Facing;
+  direction: Direction;
 }

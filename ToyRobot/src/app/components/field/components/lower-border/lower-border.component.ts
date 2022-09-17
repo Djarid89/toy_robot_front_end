@@ -10,11 +10,11 @@ import { ConnectorService } from 'src/app/services/connector.service';
 export class LowerBorderComponent implements OnDestroy {
   @Input() dim!: number[];
   setYSubs: Subscription;
-  placeNumber?: number
+  placeNumber = 0;
 
   constructor(private readonly connector: ConnectorService) {
     this.setYSubs = this.connector.setY$.subscribe({
-      next: (placeNumber: number | undefined) => this.placeNumber = placeNumber
+      next: (placeNumber: number) => this.placeNumber = placeNumber
     });
   }
 

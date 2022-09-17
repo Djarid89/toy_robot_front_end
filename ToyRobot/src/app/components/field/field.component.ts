@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ICoordinate, IPlace } from 'src/app/interfaces/shared';
+import { ICoordinate, IRobot } from 'src/app/interfaces/shared';
 import { ConnectorService } from 'src/app/services/connector.service';
 
 @Component({
@@ -12,17 +12,17 @@ export class FieldComponent implements OnDestroy {
   dim: number[];
   revDim: number[];
   placeSubs: Subscription;
-  robot!: IPlace;
+  robot!: IRobot;
 
   constructor(private readonly connector: ConnectorService) {
     this.dim = [0, 1, 2, 3, 4];
     this.revDim = this.dim.slice().reverse();
     this.placeSubs = this.connector.place$.subscribe({
-      next: (robot: IPlace) => this.robot = robot
+      next: (robot: IRobot) => this.robot = robot
     });
   }
 
-  getRobot(y: number, x: number): IPlace | undefined {
+  getRobot(y: number, x: number): IRobot | undefined {
     if(this.robot && this.robot.x === x && this.robot.y === y) {
       return this.robot;
     }

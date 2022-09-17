@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IPlace } from '../interfaces/shared';
+import { IRobot } from '../interfaces/shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnectorService {
-  place$ = new Subject<IPlace>();
-  setX$ = new Subject<number | undefined>();
-  setY$ = new Subject<number | undefined>();
+  place$ = new Subject<IRobot>();
+  setX$ = new Subject<number>();
+  setY$ = new Subject<number>();
 }

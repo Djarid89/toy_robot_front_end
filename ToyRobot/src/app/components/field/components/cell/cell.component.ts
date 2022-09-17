@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IPlace } from 'src/app/interfaces/shared';
+import { IRobot } from 'src/app/interfaces/shared';
 
-export enum Facing {
+export enum Direction {
   NONE = 0,
   NORTH,
   WEST,
@@ -17,7 +17,11 @@ export enum Facing {
 export class CellComponent {
   @Input() row!: number;
   @Input() col!: number;
-  @Input() robot?: IPlace;
-  Facing = Facing;
-  facing = Facing.NONE;
+  @Input() robot?: IRobot;
+  Direction = Direction;
+
+  getArrow(robotDirection: Direction, direction: Direction): boolean {
+    const key = Object.values(Direction).indexOf(robotDirection as unknown as Direction);
+    return key === direction;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Facing as Direction } from 'src/app/components/field/components/cell/cell.component';
+import { Direction } from 'src/app/components/field/components/cell/cell.component';
 import { ConnectorService } from 'src/app/services/connector.service';
 
 @Component({
@@ -8,26 +8,25 @@ import { ConnectorService } from 'src/app/services/connector.service';
   styleUrls: ['./placing.component.scss']
 })
 export class PlacingComponent {
-  options: string[] = [];
-  option: string;
-  x!: number | undefined;
-  y!: number | undefined;
+  directions: Direction[] = [];
   direction = Direction.NONE;
+  x = 0;
+  y = 0;
 
   constructor(private readonly connector: ConnectorService) {
-    this.options = [];
+    this.directions = [];
     for(const direction of Object.keys(Direction).filter(key => !this.isNumber(key))) {
       if(direction !== Direction[Direction.NONE]) {
-        this.options.push(direction); 
+        this.directions.push(direction as unknown as Direction); 
       }
     }
-    this.option = this.options[0];
+    this.direction = this.directions[0];
   }
 
   setX(value: number): void {
     if(value < 0 || value > 4) {
-      this.x = undefined;
-      this.connector.setX$.next();
+      this.x = 0;
+      this.connector.setX$.next(0);
       // TODO error
       return;
     }
@@ -37,8 +36,8 @@ export class PlacingComponent {
 
   setY(value: number): void {
     if(value < 0 || value > 4) {
-      this.y = undefined;
-      this.connector.setY$.next();
+      this.y = 0;
+      this.connector.setY$.next(0);
       // TODO error
       return;
     }
@@ -47,13 +46,13 @@ export class PlacingComponent {
   }
 
   placeRobot(): void {
-    if(this.x === undefined || this.y === undefined) {
+    if(this.x < 0 || this.x > 4 || this.y < 0 || this.y > 4) {
       // TODO error
       return;
     }
 
-    this.connector.setX$.next();
-    this.connector.setY$.next();
+    this.connector.setX$.next(0);
+    this.connector.setY$.next(0);
     this.connector.place$.next({ x: this.x, y: this.y, direction: this.direction });
   }
   
