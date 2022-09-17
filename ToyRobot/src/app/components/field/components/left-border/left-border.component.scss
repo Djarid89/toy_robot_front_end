@@ -1,0 +1,15 @@
+.o-leftBorder {
+  width: 24px;
+
+  .m-leftBorder-number {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .green {
+      color: greenyellow;
+      font-weight: bold;
+    }
+  }
+}

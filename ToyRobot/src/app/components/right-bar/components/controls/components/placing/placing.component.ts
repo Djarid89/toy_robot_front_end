@@ -27,19 +27,23 @@ export class PlacingComponent {
   setX(value: number): void {
     if(value < 0 || value > 4) {
       this.x = undefined;
+      this.connector.setX$.next();
       // TODO error
       return;
     }
     this.x = value;
+    this.connector.setX$.next(this.x);
   }
 
   setY(value: number): void {
     if(value < 0 || value > 4) {
       this.y = undefined;
+      this.connector.setY$.next();
       // TODO error
       return;
     }
     this.y = value;
+    this.connector.setY$.next(this.y);
   }
 
   placeRobot(): void {
@@ -48,6 +52,8 @@ export class PlacingComponent {
       return;
     }
 
+    this.connector.setX$.next();
+    this.connector.setY$.next();
     this.connector.place$.next({ x: this.x, y: this.y, direction: this.direction });
   }
   

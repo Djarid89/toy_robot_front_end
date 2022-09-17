@@ -1,5 +1,12 @@
-<div *ngFor="let row of dim; index as horIndex">
-  <div *ngFor="let col of dim; index as vertIndex">
-    <app-cell [row]="horIndex" [col]="getCol(vertIndex)" [robotHere]="isRobotHere(horIndex, getCol(vertIndex))"></app-cell>
+<div class="o-field">
+  <app-left-border [dim]="revDim"></app-left-border>
+  <div class="m-field-main">
+    <div *ngFor="let row of dim">
+      <div *ngFor="let col of revDim">
+        <app-cell [row]="row" [col]="col" [robot]="getRobot(row, col)"></app-cell>
+      </div>
+    </div>
   </div>
+  <div class="m-field-corner"></div>
+  <app-lower-border [dim]="dim"></app-lower-border>
 </div>

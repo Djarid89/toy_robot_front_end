@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IPlace } from 'src/app/interfaces/shared';
 
 export enum Facing {
   NONE = 0,
@@ -16,7 +17,7 @@ export enum Facing {
 export class CellComponent {
   @Input() row!: number;
   @Input() col!: number;
-  @Input() robotHere = false;
+  @Input() robot?: IPlace;
   Facing = Facing;
   facing = Facing.NONE;
 }

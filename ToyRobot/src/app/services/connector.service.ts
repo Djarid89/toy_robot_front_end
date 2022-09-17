@@ -7,4 +7,6 @@ import { IPlace } from '../interfaces/shared';
 })
 export class ConnectorService {
   place$ = new Subject<IPlace>();
+  setX$ = new Subject<number | undefined>();
+  setY$ = new Subject<number | undefined>();
 }

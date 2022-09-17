@@ -9,6 +9,8 @@ import { ControlsComponent } from './components/right-bar/components/controls/co
 import { PlacingComponent } from './components/right-bar/components/controls/components/placing/placing.component';
 import { MovingComponent } from './components/right-bar/components/controls/components/moving/moving.component';
 import { FormsModule } from '@angular/forms';
+import { LeftBorderComponent } from './components/field/components/left-border/left-border.component';
+import { LowerBorderComponent } from './components/field/components/lower-border/lower-border.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     RightBarComponent,
     ControlsComponent,
     PlacingComponent,
-    MovingComponent
+    MovingComponent,
+    LeftBorderComponent,
+    LowerBorderComponent
   ],
   imports: [
     BrowserModule,

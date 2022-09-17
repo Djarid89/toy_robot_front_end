@@ -1,0 +1,16 @@
+.o-lowerBorder {
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .m-lowerBorder-number {
+    width: 150px;
+    text-align: center;
+
+    .green {
+      color: greenyellow;
+      font-weight: bold;
+    }
+  }
+}
