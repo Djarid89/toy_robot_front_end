@@ -1,0 +1,5 @@
+<div *ngFor="let row of dim; index as horIndex">
+  <div *ngFor="let col of dim; index as vertIndex">
+    <app-cell [row]="horIndex" [col]="dim.length - vertIndex - 1"></app-cell>
+  </div>
+</div>
