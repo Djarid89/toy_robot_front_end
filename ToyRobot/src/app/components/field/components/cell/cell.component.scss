@@ -1,0 +1,48 @@
+.o-cell {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  display: block;
+  position: relative;
+
+  .m-cell-rightArrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 20px;
+  }
+
+  .m-cell-topArrow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 20px;
+  }
+
+  .m-cell-leftArrow {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 20px;
+  }
+
+  .m-cell-downArrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 20px;
+  }
+
+  .m-cell-robot {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

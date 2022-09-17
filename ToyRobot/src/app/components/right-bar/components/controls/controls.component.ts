@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ConnectorService } from 'src/app/services/connector.service';
 
 enum State {
   Placing = 0,
@@ -10,16 +12,18 @@ enum State {
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.scss']
 })
-export class ControlsComponent implements OnInit {
+export class ControlsComponent implements OnDestroy {
   state = State.Placing;
   State = State;
+  placeSubs: Subscription;
 
-
-  constructor() {
-
+  constructor(private readonly connector: ConnectorService) {
+    this.placeSubs = this.connector.place$.subscribe({
+      next: () => this.state = State.Moving
+    });
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.placeSubs?.unsubscribe();
   }
-
 }

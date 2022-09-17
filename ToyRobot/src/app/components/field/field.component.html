@@ -1,5 +1,5 @@
 <div *ngFor="let row of dim; index as horIndex">
   <div *ngFor="let col of dim; index as vertIndex">
-    <app-cell [row]="horIndex" [col]="dim.length - vertIndex - 1"></app-cell>
+    <app-cell [row]="horIndex" [col]="getCol(vertIndex)" [robotHere]="isRobotHere(horIndex, getCol(vertIndex))"></app-cell>
   </div>
 </div>
