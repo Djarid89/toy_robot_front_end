@@ -1,12 +1,16 @@
-import { Direction } from "../components/field/components/cell/cell.component";
-
-export interface IRobot extends IDirection, ICoordinate { }
-
-export interface ICoordinate {
-  x: number;
-  y: number;
+export interface IDirectionDescription {
+  direction: Direction;
+  description: string;
 }
 
-export interface IDirection {
-  direction: Direction;
+export enum Direction {
+  NORTH = 0,
+  EAST,
+  SOUTH,
+  WEST
+}
+
+export enum Move {
+  LEFT = 0,
+  RIGHT
 }

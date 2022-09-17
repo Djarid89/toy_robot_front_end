@@ -1,12 +1,16 @@
 .o-lowerBorder {
-  height: 24px;
+  height: 34px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .m-lowerBorder-number {
+  .m-lowerBorder-number-container {
     width: 150px;
     text-align: center;
+
+    .a-lowerBorder-number {
+      font-size: 24px;
+    }
 
     .green {
       color: greenyellow;

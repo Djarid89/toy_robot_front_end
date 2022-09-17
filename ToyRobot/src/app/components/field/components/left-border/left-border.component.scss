@@ -1,11 +1,15 @@
 .o-leftBorder {
-  width: 24px;
+  width: 34px;
 
-  .m-leftBorder-number {
+  .m-leftBorder-number-container {
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .a-leftBorder-number {
+      font-size: 24px;
+    }
 
     .green {
       color: greenyellow;

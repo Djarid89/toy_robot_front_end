@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Direction } from 'src/app/components/field/components/cell/cell.component';
+import { Robot } from 'src/app/components/class/shared';
+import { Direction, IDirectionDescription } from 'src/app/interfaces/shared';
 import { ConnectorService } from 'src/app/services/connector.service';
 
 @Component({
@@ -8,19 +9,19 @@ import { ConnectorService } from 'src/app/services/connector.service';
   styleUrls: ['./placing.component.scss']
 })
 export class PlacingComponent {
-  directions: Direction[] = [];
-  direction = Direction.NONE;
+  dirDescrs: IDirectionDescription[] = [];
+  direction: Direction;
   x = 0;
   y = 0;
 
   constructor(private readonly connector: ConnectorService) {
-    this.directions = [];
-    for(const direction of Object.keys(Direction).filter(key => !this.isNumber(key))) {
-      if(direction !== Direction[Direction.NONE]) {
-        this.directions.push(direction as unknown as Direction); 
-      }
-    }
-    this.direction = this.directions[0];
+    this.dirDescrs = [
+      { direction: Direction.NORTH, description: 'NORTH' },
+      { direction: Direction.EAST, description: 'EAST' },
+      { direction: Direction.SOUTH, description: 'SOUTH' },
+      { direction: Direction.WEST, description: 'WEST' }
+    ];
+    this.direction = this.dirDescrs[0].direction;
   }
 
   setX(value: number): void {
@@ -53,10 +54,10 @@ export class PlacingComponent {
 
     this.connector.setX$.next(0);
     this.connector.setY$.next(0);
-    this.connector.place$.next({ x: this.x, y: this.y, direction: this.direction });
+    this.connector.place$.next(new Robot(this.x, this.y, this.direction));
   }
   
-  private isNumber(value: any): boolean {
-    return !isNaN(parseFloat(value)) && !isNaN(value - 0);
+  toDirection(value: IDirectionDescription): void {
+    this.direction = value.direction;
   }
 }

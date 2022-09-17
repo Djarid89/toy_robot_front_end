@@ -1,6 +1,6 @@
 <div class="o-moving">
-  <button class="m-moving-button">LEFT</button>
-  <button class="m-moving-button">RIGHT</button>
-  <button class="m-moving-button">MOVE</button>
-  <button class="m-moving-button">REPORT</button>
+  <button class="m-moving-button" (click)="turn(Move.LEFT)">LEFT</button>
+  <button class="m-moving-button" (click)="turn(Move.RIGHT)">RIGHT</button>
+  <button class="m-moving-button" (click)="move()">MOVE</button>
+  <button class="m-moving-button" (click)="report()">REPORT</button>
 </div>

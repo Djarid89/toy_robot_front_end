@@ -6,7 +6,7 @@
     <span class="a-placing-input">
       <label>DIRECTION:</label>
       <select type="text" [(ngModel)]="direction">
-        <option *ngFor="let dir of directions">{{dir}}</option>
+        <option *ngFor="let dir of dirDescrs" [ngValue]="dir.direction">{{dir.description}}</option>
       </select>
     </span>
   </div>

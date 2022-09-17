@@ -1,5 +1,5 @@
 <div class="o-lowerBorder">
-  <div class="m-lowerBorder-number" *ngFor="let col of dim">
-    <span [class.green]="placeNumber === col">{{col}}</span>
+  <div class="m-lowerBorder-number-container" *ngFor="let col of dim">
+    <span class="a-lowerBorder-number" [class.green]="placeNumber === col && !stopPlaceNumber">{{col}}</span>
   </div>
 </div>
