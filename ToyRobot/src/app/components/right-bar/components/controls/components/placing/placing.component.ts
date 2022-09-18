@@ -33,16 +33,21 @@ export class PlacingComponent {
     this.direction = this.dirDescrs[0].direction;
   }
 
+  asd() {
+    console.log(this.x);
+    this.connector.setX$.next(this.x)
+  }
+
   placeRobot(): void {
     if(this.x < 0 || this.x > 4 || this.y < 0 || this.y > 4) {
       this.connector.error$.next('x and y must be between 0 and 4');
       return;
     }
 
-    this.x = 0;
-    this.y = 0;
     this.connector.setX$.next(0);
     this.connector.setY$.next(0);
     this.connector.place$.next(new Robot(this.x, this.y, this.direction));
+    this.x = 0;
+    this.y = 0;
   }
 }
