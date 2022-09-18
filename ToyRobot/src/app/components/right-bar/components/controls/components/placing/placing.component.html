@@ -1,8 +1,8 @@
 <div class="o-placing">
   <button class="m-placing-button" (click)="placeRobot()">PLACE</button>
   <div class="m-placing-inputs">
-    <span class="a-placing-input"><label>X:</label><input type="number" [ngModel]="x" (ngModelChange)="setX($event)" min="0" max="4"></span>
-    <span class="a-placing-input"><label>Y:</label><input type="number" [ngModel]="y" (ngModelChange)="setY($event)" min="0" max="4"></span>
+    <span class="a-placing-input"><label>X:</label><input type="number" [(ngModel)]="x" (ngModelChange)="setX($event)" min="0" max="4"></span>
+    <span class="a-placing-input"><label>Y:</label><input type="number" [(ngModel)]="y" (ngModelChange)="setY($event)" min="0" max="4"></span>
     <span class="a-placing-input">
       <label>DIRECTION:</label>
       <select type="text" [(ngModel)]="direction">

@@ -26,29 +26,25 @@ export class PlacingComponent {
 
   setX(value: number): void {
     if(value < 0 || value > 4) {
-      this.x = 0;
       this.connector.setX$.next(0);
-      // TODO error
+      this.connector.error$.next('x and y must be between 0 and 4');
       return;
     }
-    this.x = value;
     this.connector.setX$.next(this.x);
   }
 
   setY(value: number): void {
     if(value < 0 || value > 4) {
-      this.y = 0;
       this.connector.setY$.next(0);
-      // TODO error
+      this.connector.error$.next('x and y must be between 0 and 4');
       return;
     }
-    this.y = value;
     this.connector.setY$.next(this.y);
   }
 
   placeRobot(): void {
     if(this.x < 0 || this.x > 4 || this.y < 0 || this.y > 4) {
-      // TODO error
+      this.connector.error$.next('x and y must be between 0 and 4');
       return;
     }
 

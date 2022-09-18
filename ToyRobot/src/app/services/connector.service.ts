@@ -13,4 +13,6 @@ export class ConnectorService {
   turn$ = new Subject<Move>();
   move$ = new Subject<void>();
   report$ = new Subject<void>();
+  writeReport$ = new Subject<string>();
+  error$ = new Subject<string>();
 }

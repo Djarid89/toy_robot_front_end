@@ -12,6 +12,7 @@ export class FieldComponent implements OnDestroy {
   dim: number[];
   revDim: number[];
   placeSubs: Subscription;
+  reportSubs: Subscription;
   robot!: Robot;
 
   constructor(private readonly connector: ConnectorService) {
@@ -19,6 +20,9 @@ export class FieldComponent implements OnDestroy {
     this.revDim = this.dim.slice().reverse();
     this.placeSubs = this.connector.place$.subscribe({
       next: (robot: Robot) => this.robot = robot
+    });
+    this.reportSubs = this.connector.report$.subscribe({
+      next: () => this.connector.writeReport$.next(this.robot.getReport())
     });
   }
 
@@ -29,11 +33,8 @@ export class FieldComponent implements OnDestroy {
     return undefined;
   }
 
-  getCol(vertIndex: number): number {
-    return this.dim.length - vertIndex - 1;
-  }
-
   ngOnDestroy(): void {
     this.placeSubs?.unsubscribe();
+    this.reportSubs?.unsubscribe();
   }
 }
