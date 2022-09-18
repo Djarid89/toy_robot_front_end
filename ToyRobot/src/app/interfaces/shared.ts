@@ -14,3 +14,11 @@ export enum Move {
   LEFT = 0,
   RIGHT
 }
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 'ArrowRight',
+  LEFT_ARROW = 'ArrowLeft',
+  ENTER = 'Enter',
+  R = 'r',
+  P = 'p'
+}

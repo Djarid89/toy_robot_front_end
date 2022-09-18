@@ -1,5 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { KEY_CODE, Move } from 'src/app/interfaces/shared';
 import { ConnectorService } from 'src/app/services/connector.service';
 import { Robot } from '../class/shared';
 
@@ -9,10 +10,28 @@ import { Robot } from '../class/shared';
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent implements OnDestroy {
+  @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
+    if(!this.robot) {
+      return;
+    }
+
+    if(event.key === KEY_CODE.RIGHT_ARROW) {
+      this.connector.turn$.next(Move.RIGHT);
+    } else if(event.key === KEY_CODE.LEFT_ARROW) {
+      this.connector.turn$.next(Move.LEFT);
+    } else if(event.key === KEY_CODE.ENTER) {
+      this.connector.move$.next();
+    } else if(event.key === KEY_CODE.R) {
+      this.connector.writeReport$.next(this.robot.getReport());
+    }
+  }
+
   dim: number[];
   revDim: number[];
   placeSubs: Subscription;
   reportSubs: Subscription;
+  private turnSubs!: Subscription;
+  private moveSubs!: Subscription;
   robot!: Robot;
 
   constructor(private readonly connector: ConnectorService) {
@@ -22,7 +41,21 @@ export class FieldComponent implements OnDestroy {
       next: (robot: Robot) => this.robot = robot
     });
     this.reportSubs = this.connector.report$.subscribe({
-      next: () => this.connector.writeReport$.next(this.robot.getReport())
+      next: () => this.connector.writeReport$.next(this.robot?.getReport() || '')
+    });
+    this.turnSubs = this.connector.turn$.subscribe({
+      next: (move: Move) => {
+        if(this.robot) {
+          this.robot.turn(move)
+        }
+      }
+    });
+    this.moveSubs = this.connector.move$.subscribe({
+      next: () => {
+        if(this.robot) {
+          this.robot.move(this.connector)
+        }
+      }
     });
   }
 
@@ -36,5 +69,7 @@ export class FieldComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.placeSubs?.unsubscribe();
     this.reportSubs?.unsubscribe();
+    this.turnSubs?.unsubscribe();
+    this.moveSubs?.unsubscribe();
   }
 }

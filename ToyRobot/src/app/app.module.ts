@@ -11,6 +11,7 @@ import { MovingComponent } from './components/right-bar/components/controls/comp
 import { FormsModule } from '@angular/forms';
 import { LeftBorderComponent } from './components/field/components/left-border/left-border.component';
 import { LowerBorderComponent } from './components/field/components/lower-border/lower-border.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LowerBorderComponent } from './components/field/components/lower-border
     PlacingComponent,
     MovingComponent,
     LeftBorderComponent,
-    LowerBorderComponent
+    LowerBorderComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

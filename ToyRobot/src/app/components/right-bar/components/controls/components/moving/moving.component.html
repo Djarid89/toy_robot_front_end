@@ -1,6 +1,6 @@
 <div class="o-moving">
-  <button class="m-moving-button" (click)="turn(Move.LEFT)">LEFT</button>
-  <button class="m-moving-button" (click)="turn(Move.RIGHT)">RIGHT</button>
-  <button class="m-moving-button" (click)="move()">MOVE</button>
-  <button class="m-moving-button" (click)="report()">REPORT</button>
+  <app-button text="LEFT or ←" (clickEmitter)="turn(Move.LEFT)"></app-button>
+  <app-button text="RIGHT or →" (clickEmitter)="turn(Move.LEFT)"></app-button>
+  <app-button text="MOVE or Enter" (clickEmitter)="move()"></app-button>
+  <app-button text="REPORT or r" (clickEmitter)="report()"></app-button>
 </div>

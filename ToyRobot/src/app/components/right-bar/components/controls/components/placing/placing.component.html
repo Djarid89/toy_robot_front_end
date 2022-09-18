@@ -1,9 +1,19 @@
 <div class="o-placing">
-  <button class="m-placing-button" (click)="placeRobot()">PLACE</button>
+  <app-button text="PLACE or p" (clickEmitter)="placeRobot()"></app-button>
   <div class="m-placing-inputs">
-    <span class="a-placing-input"><label>X:</label><input type="number" [(ngModel)]="x" (ngModelChange)="setX($event)" min="0" max="4"></span>
-    <span class="a-placing-input"><label>Y:</label><input type="number" [(ngModel)]="y" (ngModelChange)="setY($event)" min="0" max="4"></span>
-    <span class="a-placing-input">
+    <span class="a-placing-x">
+      <label>X:</label>
+      <select type="number" [(ngModel)]="x" (ngModelChange)="connector.setX$.next(this.x)">
+        <option *ngFor="let value of range" [ngValue]="value">{{value}}</option>
+      </select>
+    </span>
+    <span class="a-placing-y">
+      <label>Y:</label>
+      <select type="number" [(ngModel)]="y" (ngModelChange)="connector.setY$.next(this.y)">
+        <option *ngFor="let value of range" [ngValue]="value">{{value}}</option>
+      </select>
+    </span>
+    <span class="a-placing-direction">
       <label>DIRECTION:</label>
       <select type="text" [(ngModel)]="direction">
         <option *ngFor="let dir of dirDescrs" [ngValue]="dir.direction">{{dir.description}}</option>

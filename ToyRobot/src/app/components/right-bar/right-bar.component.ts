@@ -20,7 +20,7 @@ export class RightBarComponent implements OnDestroy {
       next: (report: string) => {
         this.clear();
         this.report = report;
-        this.timeout = setTimeout(() => this.report = '', 3000);
+        this.timeout = setTimeout(() => this.report = '', 5000);
       }
     });
     this.errorSubs = this.connector.error$.subscribe({
