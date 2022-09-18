@@ -32,12 +32,7 @@ export class PlacingComponent {
     this.range = [0, 1, 2, 3, 4];
     this.direction = this.dirDescrs[0].direction;
   }
-
-  asd() {
-    console.log(this.x);
-    this.connector.setX$.next(this.x)
-  }
-
+  
   placeRobot(): void {
     if(this.x < 0 || this.x > 4 || this.y < 0 || this.y > 4) {
       this.connector.error$.next('x and y must be between 0 and 4');

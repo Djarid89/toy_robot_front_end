@@ -3,7 +3,7 @@
   <div class="m-placing-inputs">
     <span class="a-placing-x">
       <label>X:</label>
-      <select type="number" [(ngModel)]="x" (ngModelChange)="asd()">
+      <select type="number" [(ngModel)]="x" (ngModelChange)="connector.setX$.next(this.x)">
         <option *ngFor="let value of range" [ngValue]="value">{{value}}</option>
       </select>
     </span>
